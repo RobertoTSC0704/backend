@@ -34,7 +34,7 @@ export const register = async (req, res) => {
         res.cookie('token', token,{
             sameSite: 'none',
             secure: true
-            //httpOnly:true,
+        
         });
 
         res.json({
@@ -68,7 +68,7 @@ export const login = async (req, res) => {
         res.cookie('token', token,{
             sameSite: 'none',
             secure: true,
-            //httpOnly:true
+        
         });
 
         res.json({
