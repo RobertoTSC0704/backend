@@ -10,17 +10,13 @@ const salesSchema = new mongoose.Schema({
         default: 1, // Valor por defecto
         required: true, // Campo obligatorio
     },
-    total: {
+    price: {
         type: Number, // Tipo Number para el total
         required: true, // Campo obligatorio
     },
-    user: {
-        type: mongoose.Schema.Types.ObjectId, // Referencia a un documento en otra colección
-        ref: "User", // Indica la colección referenciada
-        required: true, // Campo obligatorio
-    },
+ 
 }, {
-    timestamps: true // Agrega createdAt y updatedAt automáticamente
+    
 });
 
 export default mongoose.model("Sales", salesSchema);

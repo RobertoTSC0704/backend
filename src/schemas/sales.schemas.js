@@ -1,13 +1,10 @@
-import { z } from 'zod';
+import mongoose from 'mongoose';
 
-export const salesSchema = z.object({
-    quantity: z.number({
-        required_error: 'La cantidad es requerida',
-    }).positive('La cantidad debe ser mayor a 0'),
-    total: z.number({
-        required_error: 'El total de la venta es requerido',
-    }).positive('El total debe ser mayor a 0'),
-    date: z.string({
-        required_error: 'La fecha de la venta es requerida',
-    }).optional(), // Fecha opcional; si no está, se puede asignar automáticamente en el backend
-}); // Fin de saleSchema
+const SalesSchema = new mongoose.Schema({
+  productName: String,
+  price: Number,
+  quantity: Number,
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+});
+
+export default mongoose.model('Sales', SalesSchema);

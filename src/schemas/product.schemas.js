@@ -1,12 +1,16 @@
-import {z} from 'zod';
-export const productSchema = z.object({
-    name: z.string({
-        required_error: 'Nombre del producto requerido'
-    }),
-    price: z.string({
-        required_error: 'Precio del producto requerido'
-    }).optional(),
-    year: z.string({
-        required_error: 'Año del producto requerido'
-    }).optional()
-}); //Fin de productSchema
+import { z } from 'zod';
+
+export const salesSchema = z.object({
+  productName: z.string({
+    required_error: 'El nombre del producto es requerido',
+  }),
+  price: z.number({
+    required_error: 'El precio del producto es requerido',
+  }).nonnegative('El precio debe ser un número no negativo'),
+  quantity: z.number({
+    required_error: 'La cantidad es requerida',
+  }).int('La cantidad debe ser un número entero').nonnegative('La cantidad debe ser un número no negativo'),
+  user: z.string({
+    required_error: 'El identificador del usuario es requerido',
+  }).optional(), // Se marca como opcional si el backend lo asigna automáticamente
+}); // Fin de salesSchema
