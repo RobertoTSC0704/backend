@@ -15,8 +15,11 @@ const __dirname = path.dirname(__filename);
 
 //Importamos las rutas para usuarios
 import authRoutes from './routes/auth.routes.js';
-//importamos los rutas para usuarios
+//importamos los rutas para productos
 import productRoutes from './routes/products.routes.js';
+
+import salesRoutes from './routes/sales.routes.js';
+
 import { version } from 'os';
 
 const app = express();
@@ -41,6 +44,7 @@ app.use(express.urlencoded({extended:false}));
 //Indicar que el servidor usara el objeto rutas
 app.use('/api/', authRoutes);
 app.use('/api/', productRoutes)
+app.use('/api/', salesRoutes)
 
 app.get('/', (req, res) =>{
     res.json({
