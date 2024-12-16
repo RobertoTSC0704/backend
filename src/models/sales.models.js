@@ -5,13 +5,18 @@ const salesSchema = new mongoose.Schema({
         type: String,
         required: true, // Campo obligatorio
     },
-    quantity: {
-        type: Number, // Tipo Number para cantidades
-        default: 1, // Valor por defecto
+    price: {
+        type: String, // Tipo String (aunque podría ser mejor usar `Number`)
+        default: "0.0", // Valor por defecto como string
         required: true, // Campo obligatorio
     },
-    price: {
-        type: Number, // Tipo Number para el total
+    quantity: {
+        type: Number, // Tipo String (puedes usar `Number` si es un número)
+        default: "2023", // Valor por defecto como string
+        required: true, // Campo obligatorio
+    },
+    image: {
+        type: String, // Corrección: `type` 
         required: true, // Campo obligatorio
     },
  

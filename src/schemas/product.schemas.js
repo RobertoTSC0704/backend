@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const salesSchema = z.object({
+export const productSchema = z.object({
   productName: z.string({
     required_error: 'El nombre del producto es requerido',
   }),

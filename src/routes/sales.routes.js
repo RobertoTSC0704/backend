@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { authRequired } from '../middlewares/ValidateToken.js';
 
+import { salesSchema} from '../schemas/sales.schemas.js';
 
 
 
@@ -12,7 +13,7 @@ import {
     editSale
 } from '../controllers/sales.controllers.js';
 import { validateSchema } from '../middlewares/validator.middleware.js';
-import { salesSchema} from '../schemas/sales.schemas.js';
+
 
 const router = Router();
 
