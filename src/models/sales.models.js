@@ -14,14 +14,8 @@ const salesSchema = new mongoose.Schema({
         type: Number, // Tipo String (puedes usar `Number` si es un número)
         default: "2023", // Valor por defecto como string
         required: true, // Campo obligatorio
-    },
-    image: {
-        type: String, // Corrección: `type` 
-        required: true, // Campo obligatorio
-    },
- 
-}, {
-    
+   
+}, 
 });
 
 export default mongoose.model("Sales", salesSchema);

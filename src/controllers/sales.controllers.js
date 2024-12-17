@@ -103,8 +103,6 @@ export const updateSale = async (req, res) => {
       productName: req.body.name,
       quantity: req.body.quantity,
       price: req.body.price,
-      image: req.file.filename,
-      user: req.user.id,
     };
 
     const sale = await Sales.findByIdAndUpdate(req.params.id, data, {
