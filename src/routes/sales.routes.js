@@ -8,7 +8,7 @@ import {
     updateSale,
 } from '../controllers/sales.controllers.js';
 import { validateSchema } from '../middlewares/validator.middleware.js';
-import { saleSchema } from '../schemas/sale.schemas.js'; // Esquema para validar las ventas
+import { saleSchema } from '../schemas/sales.schemas.js'; // Esquema para validar las ventas
 import { uploadImage } from '../middlewares/uploadImage.middleware.js';
 
 const router = Router();
