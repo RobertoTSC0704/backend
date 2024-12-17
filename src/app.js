@@ -38,22 +38,38 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/img', express.static(path.join(__dirname, 'public/img')));
 
 // Configuración de las rutas de la API
-app.use('/api/', authRoutes);
-app.use('/api/', productRoutes);
+app.use('/api', authRoutes);
+app.use('/api', productRoutes);
 app.use('/api', salesRoutes);
 
 // Endpoint raíz para mostrar mensaje de bienvenida y rutas disponibles
 app.get('/', (req, res) => {
-    res.json({
+    res.status(200).json({
         mensaje: "Bienvenido al API REST de Productos",
         version: "1.0.0",
         rutasDisponibles: [
             { endpoint: "/api/register", metodo: "POST", descripcion: "Crea un nuevo usuario" },
             { endpoint: "/api/login", metodo: "POST", descripcion: "Inicia sesión" },
             { endpoint: "/api/products", metodo: "GET", descripcion: "Obtiene la lista de productos" },
-            { endpoint: "/api/sales", metodo: "GET", descripcion: "Obtiene la lista de ventas" },
-            { endpoint: "/api/sales", metodo: "POST", descripcion: "Se registra la venta" }
+            { endpoint: "/api/sales", metodo: "POST", descripcion: "Registra una nueva venta" }
         ]
+    });
+});
+
+// Manejo de errores 404 (si alguna ruta no existe)
+app.use((req, res, next) => {
+    res.status(404).json({
+        error: "Ruta no encontrada",
+        message: `No se encuentra el endpoint: ${req.originalUrl}`
+    });
+});
+
+// Manejo de errores generales
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({
+        error: "Error en el servidor",
+        message: err.message || 'Ocurrió un error inesperado'
     });
 });
 
